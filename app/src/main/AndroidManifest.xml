@@ -27,6 +27,12 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+        <activity
+            android:name=".detection.DetectorActivity"
+            android:label="@string/tfe_od_app_name"
+            android:exported="true"
+            android:screenOrientation="portrait">
+        </activity>
     </application>
 
 </manifest>

@@ -10,4 +10,7 @@
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Galería</string>
     <string name="menu_slideshow">Slideshow</string>
+
+    <string name="tfe_od_app_name" translation_description="Reconocimiento de cara [CHAR_LIMIT=40]">Reconocimiento de cara</string>
+    <string name="tfe_od_camera_error" translation_description="Error con la cámara[CHAR_LIMIT=40]">Este dispositivo no soporta Camera2 API.</string>
 </resources>

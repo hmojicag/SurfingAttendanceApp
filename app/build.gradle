@@ -66,4 +66,9 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.4'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
+
+    // Detection dependencies for detection package from mx.ssaj.surfingattendanceapp.detection
+    // added MLKit dependencies for face detector
+    implementation 'com.google.mlkit:face-detection:16.0.0'
+    implementation('org.tensorflow:tensorflow-lite:0.0.0-nightly') { changing = true }
 }
