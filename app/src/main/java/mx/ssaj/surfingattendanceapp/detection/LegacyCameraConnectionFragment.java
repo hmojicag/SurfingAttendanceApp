@@ -31,6 +31,7 @@ import android.view.TextureView;
 import android.view.View;
 import android.view.ViewGroup;
 
+import mx.ssaj.surfingattendanceapp.R;
 import mx.ssaj.surfingattendanceapp.detection.customview.AutoFitTextureView;
 import mx.ssaj.surfingattendanceapp.detection.env.ImageUtils;
 import mx.ssaj.surfingattendanceapp.detection.env.Logger;

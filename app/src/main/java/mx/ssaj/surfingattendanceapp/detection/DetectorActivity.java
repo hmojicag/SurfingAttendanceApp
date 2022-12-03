@@ -48,6 +48,7 @@ import com.google.mlkit.vision.face.FaceDetection;
 import com.google.mlkit.vision.face.FaceDetector;
 import com.google.mlkit.vision.face.FaceDetectorOptions;
 
+import mx.ssaj.surfingattendanceapp.R;
 import mx.ssaj.surfingattendanceapp.detection.customview.OverlayView;
 import mx.ssaj.surfingattendanceapp.detection.customview.OverlayView.DrawCallback;
 import mx.ssaj.surfingattendanceapp.detection.env.BorderedText;

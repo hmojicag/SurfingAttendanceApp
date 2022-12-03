@@ -70,5 +70,5 @@ dependencies {
     // Detection dependencies for detection package from mx.ssaj.surfingattendanceapp.detection
     // added MLKit dependencies for face detector
     implementation 'com.google.mlkit:face-detection:16.0.0'
-    implementation('org.tensorflow:tensorflow-lite:0.0.0-nightly') { changing = true }
+    implementation 'org.tensorflow:tensorflow-lite:2.6.0'
 }

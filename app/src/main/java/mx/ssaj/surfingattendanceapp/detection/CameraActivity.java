@@ -54,6 +54,7 @@ import androidx.appcompat.widget.Toolbar;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import mx.ssaj.surfingattendanceapp.R;
 import mx.ssaj.surfingattendanceapp.detection.env.ImageUtils;
 import mx.ssaj.surfingattendanceapp.detection.env.Logger;
 
