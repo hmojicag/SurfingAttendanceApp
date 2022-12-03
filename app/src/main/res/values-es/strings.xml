@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">SurfingAttendanceApp</string>
+    <string name="navigation_drawer_open">Abrir Menu de Navegación</string>
+    <string name="navigation_drawer_close">Cerrar Menu de Navegación</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Header de navegación</string>
+    <string name="action_settings">Configuración</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Galería</string>
+    <string name="menu_slideshow">Slideshow</string>
+</resources>

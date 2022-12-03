@@ -1,5 +1,6 @@
 package mx.ssaj.surfingattendanceapp.data.model;
 
+import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
@@ -11,6 +12,7 @@ public class Users {
 
     // User ID number
     // user == Empleado in SurfingTime
+    @NonNull
     @PrimaryKey
     public int user; // PK
 

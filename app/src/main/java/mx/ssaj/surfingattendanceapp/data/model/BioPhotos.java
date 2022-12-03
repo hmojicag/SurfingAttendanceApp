@@ -1,9 +1,9 @@
 package mx.ssaj.surfingattendanceapp.data.model;
 
+import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.Ignore;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import org.apache.commons.lang3.StringUtils;
@@ -11,8 +11,10 @@ import org.apache.commons.lang3.StringUtils;
 @Entity(primaryKeys = {"user", "no"})
 public class BioPhotos {
 
+    @NonNull
     public int user;// PK
 
+    @NonNull
     // A consecutive from 1 to n in order of importance
     // A user can have as many BioPhotos as needed
     public int no;// PK
