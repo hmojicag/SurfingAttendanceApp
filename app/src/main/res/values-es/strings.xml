@@ -8,11 +8,13 @@
     <string name="action_settings">Configuración</string>
 
     <string name="button_open_attendance_activity">Open Attendance Screen</string>
+    <string name="button_add_user">Agregar Usuario</string>
 
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Galería</string>
     <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_users">Usuarios</string>
 
-    <string name="tfe_od_app_name" translation_description="Reconocimiento de cara [CHAR_LIMIT=40]">Reconocimiento de cara</string>
+    <string name="tfe_od_app_name" translation_description="Surfing Attendance app [CHAR_LIMIT=40]">Surfing Attendance</string>
     <string name="tfe_od_camera_error" translation_description="Error con la cámara[CHAR_LIMIT=40]">Este dispositivo no soporta Camera2 API.</string>
 </resources>

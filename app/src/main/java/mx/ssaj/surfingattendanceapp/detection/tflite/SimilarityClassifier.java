@@ -120,6 +120,10 @@ public interface SimilarityClassifier {
         resultString += location + " ";
       }
 
+      if (extra != null) {
+        resultString += extra + " ";
+      }
+
       return resultString.trim();
     }
 

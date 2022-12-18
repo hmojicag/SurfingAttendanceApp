@@ -38,6 +38,12 @@
             android:exported="true"
             android:screenOrientation="portrait">
         </activity>
+        <activity
+            android:name=".ui.facedetectionwrappers.AttendanceRecordsByFaceDetectionActivity"
+            android:label="@string/tfe_od_app_name"
+            android:exported="true"
+            android:screenOrientation="portrait">
+        </activity>
     </application>
 
 </manifest>

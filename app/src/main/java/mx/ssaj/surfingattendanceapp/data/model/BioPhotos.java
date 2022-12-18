@@ -8,6 +8,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import org.apache.commons.lang3.StringUtils;
 
+import java.util.Date;
+
 @Entity(primaryKeys = {"user", "no"})
 public class BioPhotos {
 
@@ -30,31 +32,48 @@ public class BioPhotos {
     // Length(max)
     public String photoIdContent;
 
-    /** JSON format of the set of features for this BioPhoto
-     *  Example: [123.2, 9812.0, 1121.2, ...]
+    /**Name of user photo*/
+    // Length(50)
+    public String croppedPhotoIdName;
+
+    /**The size of user photo data in Base64 format*/
+    public int croppedPhotoIdSize;
+
+    /**User photo data in Base64 format*/
+    // Length(max)
+    public String croppedPhotoIdContent;
+
+    /** JSON format of the set of features for this BioPhoto which is a float[][]
+     *  Example: [[123.2, 9812.0, 1121.2, ...], [...], [...]]
      * **/
     // Length(max)
     public String features;
+
+    // Date format: "yyyy-MM-dd HH:mm:ss"
+    public String lastUpdated;
+
+    // Boolean. Is this record synced to SurfingTime already?
+    public int isSync;
 
     /** ---------------------------------------------------------------------------------------- **/
     /** Useful calculated fields  **/
 
     @Ignore
-    private float[] feature;
+    private float[][] feature;
 
     @Ignore
-    public float[] getFeature() {
+    public float[][] getFeature() {
         if (feature == null) {
             if (StringUtils.isEmpty(features)) {
-                feature = new float[]{};
+                feature = new float[][]{};
             } else {
                 try {
                     ObjectMapper objectMapper = new ObjectMapper();
-                    feature = objectMapper.readValue(features, float[].class);
+                    feature = objectMapper.readValue(features, float[][].class);
                 } catch (Exception ex) {
                     // TODO: How to Logging???
                     ex.printStackTrace();
-                    feature = new float[]{};
+                    feature = new float[][]{};
                 }
             }
         }

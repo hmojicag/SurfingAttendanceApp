@@ -2,9 +2,11 @@ package mx.ssaj.surfingattendanceapp.data;
 
 import android.content.Context;
 
+import androidx.annotation.NonNull;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
+import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -37,10 +39,56 @@ public abstract class SurfingAttendanceDatabase extends RoomDatabase {
                 if (INSTANCE == null) {
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
                                     SurfingAttendanceDatabase.class, "surfing_attendance_database")
+                            .addCallback(sRoomDatabaseCallback)
                             .build();
                 }
             }
         }
         return INSTANCE;
     }
+
+    private static RoomDatabase.Callback sRoomDatabaseCallback = new RoomDatabase.Callback() {
+
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                // Populate the database in the background.
+                // If you want to start with more words, just add them.
+                UsersDao dao = INSTANCE.usersDao();
+                int usersCount = dao.getUsersCount();
+
+                if (usersCount > 0) {
+                    // Return if database is already populated
+                    return;
+                }
+
+                Users user = new Users();
+                user.user = 1;
+                user.name = "Hazael Mojica";
+                dao.insert(user);
+
+                user = new Users();
+                user.user = 2;
+                user.name = "Juventino Hernandez";
+                dao.insert(user);
+
+                user = new Users();
+                user.user = 3;
+                user.name = "Alberto Galvan";
+                dao.insert(user);
+            }
+        };
+
+        @Override
+        public void onOpen(@NonNull SupportSQLiteDatabase db) {
+            databaseWriteExecutor.execute(runnable);
+        }
+
+        @Override
+        public void onCreate(@NonNull SupportSQLiteDatabase db) {
+            super.onCreate(db);
+            databaseWriteExecutor.execute(runnable);
+        }
+    };
+
 }
