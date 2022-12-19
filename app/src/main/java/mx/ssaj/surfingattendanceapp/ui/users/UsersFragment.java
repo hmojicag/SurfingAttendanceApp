@@ -1,5 +1,6 @@
 package mx.ssaj.surfingattendanceapp.ui.users;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +9,9 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -16,8 +20,10 @@ import com.google.android.material.snackbar.Snackbar;
 import java.util.ArrayList;
 import java.util.List;
 
+import mx.ssaj.surfingattendanceapp.R;
 import mx.ssaj.surfingattendanceapp.data.model.Users;
 import mx.ssaj.surfingattendanceapp.databinding.FragmentUsersBinding;
+import mx.ssaj.surfingattendanceapp.ui.users.upsert.UserUpsertFragment;
 
 public class UsersFragment extends Fragment {
 
@@ -30,8 +36,7 @@ public class UsersFragment extends Fragment {
         View root = binding.getRoot();
 
         binding.buttonAddUser.setOnClickListener(view -> {
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show();
+            Navigation.findNavController(view).navigate(R.id.action_usersFragment_to_usersUpsertFragment);
         });
 
         RecyclerView recyclerViewUsers = binding.recyclerViewUsers;

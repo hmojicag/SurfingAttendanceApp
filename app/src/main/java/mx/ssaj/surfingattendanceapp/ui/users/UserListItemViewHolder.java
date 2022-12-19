@@ -29,7 +29,8 @@ public class UserListItemViewHolder extends RecyclerView.ViewHolder {
 
     public void bind(Users user) {
         String userTruncName = StringUtils.truncate(user.name, 25);
-        textViewUserName.setText(userTruncName);
+        String fullNameDesc = user.user + " " + userTruncName;
+        textViewUserName.setText(fullNameDesc);
         textViewBioData.setText("1 FingerPrint, 1 BioPhoto");
         imageViewUserPicture.setImageResource(R.drawable.account_circle);
     }

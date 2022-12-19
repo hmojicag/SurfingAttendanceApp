@@ -26,4 +26,8 @@ public class UsersRepository {
     public LiveData<List<Users>> getAllUsersLive() {
         return usersDao.getAllUsersLive();
     }
+
+    public void insert(Users user) {
+        usersDao.insert(user);
+    }
 }
