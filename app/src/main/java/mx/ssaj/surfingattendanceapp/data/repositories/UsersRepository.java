@@ -23,11 +23,25 @@ public class UsersRepository {
         return usersDao.getAllUsers();
     }
 
+    public Users findById(int userId) {
+        return usersDao.findById(userId);
+    }
+
+    public int nextId() {
+        int userId = usersDao.nextId();
+        userId = userId == 0 ? 1 : userId;
+        return userId;
+    }
+
     public LiveData<List<Users>> getAllUsersLive() {
         return usersDao.getAllUsersLive();
     }
 
     public void insert(Users user) {
         usersDao.insert(user);
+    }
+
+    public void update(Users user) {
+        usersDao.update(user);
     }
 }

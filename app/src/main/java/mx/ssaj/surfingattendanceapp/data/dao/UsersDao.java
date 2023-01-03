@@ -5,6 +5,7 @@ import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
+import androidx.room.Update;
 
 import java.util.List;
 
@@ -22,6 +23,9 @@ public interface UsersDao {
     @Query("SELECT * FROM Users WHERE user = :userId")
     Users findById(int userId);
 
+    @Query("SELECT user+1 FROM Users ORDER BY user DESC LIMIT 1")
+    int nextId();
+
     @Query("SELECT * FROM Users ORDER BY user ASC")
     LiveData<List<Users>> getAllUsersLive();
 
@@ -30,5 +34,8 @@ public interface UsersDao {
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     void insert(Users users);
+
+    @Update(entity = Users.class)
+    void update(Users user);
 
 }

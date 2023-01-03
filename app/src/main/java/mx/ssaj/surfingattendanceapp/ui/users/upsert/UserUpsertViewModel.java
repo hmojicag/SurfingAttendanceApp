@@ -20,4 +20,16 @@ public class UserUpsertViewModel extends AndroidViewModel {
         usersRepository.insert(user);
     }
 
+    public void update(Users user) {
+        usersRepository.update(user);
+    }
+
+    public Users findById(int userId) {
+        return usersRepository.findById(userId);
+    }
+
+    public int nextId() {
+        return usersRepository.nextId();
+    }
+
 }

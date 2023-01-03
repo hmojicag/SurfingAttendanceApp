@@ -5,6 +5,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.AsyncDifferConfig;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
@@ -34,7 +35,12 @@ public class UserListItemAdapter extends ListAdapter<Users, UserListItemViewHold
         Users user = getItem(position);
         holder.bind(user);
         holder.itemView.setOnClickListener(view -> {
-            Toast.makeText(view.getContext(), StringUtils.truncate(user.name, 25) + " Clicked!!", Toast.LENGTH_SHORT).show();
+            mx.ssaj.surfingattendanceapp.ui.users.UsersFragmentDirections.ActionUsersFragmentToUsersUpsertFragment action =
+                    UsersFragmentDirections.actionUsersFragmentToUsersUpsertFragment();
+
+            // Passing the User Id
+            action.setUserId(user.user);
+            Navigation.findNavController(view).navigate(action);
         });
     }
 

@@ -43,5 +43,9 @@
             android:id="@+id/action_usersUpsertFragment_to_usersFragment"
             app:destination="@id/nav_users"
             />
+        <argument
+            android:name="UserId"
+            app:argType="integer"
+            android:defaultValue="-1" />
     </fragment>
 </navigation>

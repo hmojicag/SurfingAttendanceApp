@@ -53,29 +53,32 @@ public abstract class SurfingAttendanceDatabase extends RoomDatabase {
             @Override
             public void run() {
                 // Populate the database in the background.
-                // If you want to start with more words, just add them.
-                UsersDao dao = INSTANCE.usersDao();
-                int usersCount = dao.getUsersCount();
+                // If you want to start with more records, just add them.
+//                UsersDao dao = INSTANCE.usersDao();
 
-                if (usersCount > 0) {
-                    // Return if database is already populated
-                    return;
-                }
+//                dao.deleteAll();
 
-                Users user = new Users();
-                user.user = 1;
-                user.name = "Hazael Mojica";
-                dao.insert(user);
+//                int usersCount = dao.getUsersCount();
 
-                user = new Users();
-                user.user = 2;
-                user.name = "Juventino Hernandez";
-                dao.insert(user);
+//                if (usersCount > 0) {
+//                    // Return if database is already populated
+//                    return;
+//                }
 
-                user = new Users();
-                user.user = 3;
-                user.name = "Alberto Galvan";
-                dao.insert(user);
+//                Users user = new Users();
+//                user.user = 1;
+//                user.name = "Hazael Mojica";
+//                dao.insert(user);
+//
+//                user = new Users();
+//                user.user = 2;
+//                user.name = "Juventino Hernandez";
+//                dao.insert(user);
+//
+//                user = new Users();
+//                user.user = 3;
+//                user.name = "Alberto Galvan";
+//                dao.insert(user);
             }
         };
 
