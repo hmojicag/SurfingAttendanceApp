@@ -12,7 +12,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import mx.ssaj.surfingattendanceapp.databinding.FragmentHomeBinding;
-import mx.ssaj.surfingattendanceapp.detection.DetectorActivity;
+import mx.ssaj.surfingattendanceapp.ui.facedetectionwrappers.AttendanceRecordsByFaceDetectionActivity;
 
 public class HomeFragment extends Fragment {
 
@@ -31,7 +31,7 @@ public class HomeFragment extends Fragment {
 
         // OnClick @+id/button_open_attendance
         binding.buttonOpenAttendance.setOnClickListener(view -> {
-            Intent intent = new Intent(getActivity(), DetectorActivity.class);
+            Intent intent = new Intent(getActivity(), AttendanceRecordsByFaceDetectionActivity.class);
             startActivity(intent);
         });
 

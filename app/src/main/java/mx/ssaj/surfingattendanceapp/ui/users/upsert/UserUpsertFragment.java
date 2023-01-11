@@ -21,6 +21,7 @@ public class UserUpsertFragment extends Fragment {
     private static String TAG = "UserUpsertFragment";
     private FragmentUsersUpsertBinding binding;
 
+    @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         UserUpsertViewModel userUpsertViewModel = new ViewModelProvider(this).get(UserUpsertViewModel.class);
@@ -36,6 +37,9 @@ public class UserUpsertFragment extends Fragment {
             SurfingAttendanceDatabase.databaseWriteExecutor.execute(() -> {
                 int nextUserId = userUpsertViewModel.nextId();
                 binding.editTextUpsertUserId.setText(String.valueOf(nextUserId));
+
+                // Disable set BioPhoto
+                binding.imageviewUpsertBiophoto.setEnabled(false);
             });
         } else {// Edit existing
             SurfingAttendanceDatabase.databaseWriteExecutor.execute(() -> {
@@ -44,13 +48,20 @@ public class UserUpsertFragment extends Fragment {
                 binding.editTextUpsertName.setText(user.name);
                 binding.editTextUpsertCard.setText(user.mainCard);
                 binding.editTextUpsertPassword.setText(user.password);
-                binding.switchUpsertActive.setChecked(StringUtils.equals(user.status, "A"));
+
+                requireActivity().runOnUiThread(() -> {
+                    binding.switchUpsertActive.setChecked(StringUtils.equals(user.status, "A"));
+                });
             });
 
             // Disable the edition of the Id
             binding.editTextUpsertUserId.setEnabled(false);
         }
 
+
+
+        // ON CLICK SAVE
+        // -----------------------------------------------------------------------------------------
         binding.buttonSave.setOnClickListener(view -> {
             SurfingAttendanceDatabase.databaseWriteExecutor.execute(() -> {
                 Users user;
@@ -81,7 +92,25 @@ public class UserUpsertFragment extends Fragment {
             Navigation.findNavController(view).popBackStack();
         });
 
+        // ON CLICK SET BIOPHOTO
+        // -----------------------------------------------------------------------------------------
+        binding.imageviewUpsertBiophoto.setOnClickListener(view -> {
+            // Navigate to Activity using safe args
+            mx.ssaj.surfingattendanceapp.ui.users.upsert.UserUpsertFragmentDirections.ActionUsersUpsertFragmentToUpdateBioPhotoFaceDetectionActivity action =
+                    UserUpsertFragmentDirections.actionUsersUpsertFragmentToUpdateBioPhotoFaceDetectionActivity();
+            action.setUserId(userId);
+            Navigation.findNavController(view).navigate(action);
+        });
+
         return root;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        // TODO: Do we need to refresh the view here? Like load new data or is it done automatically?
+
     }
 
     @Override

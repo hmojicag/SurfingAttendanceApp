@@ -44,6 +44,12 @@
             android:exported="true"
             android:screenOrientation="portrait">
         </activity>
+        <activity
+            android:name=".ui.facedetectionwrappers.UpdateBioPhotoFaceDetectionActivity"
+            android:label="@string/activity_update_biophoto"
+            android:exported="true"
+            android:screenOrientation="portrait">
+        </activity>
     </application>
 
 </manifest>

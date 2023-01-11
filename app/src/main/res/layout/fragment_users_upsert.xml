@@ -35,7 +35,8 @@
             android:layout_height="wrap_content"
             android:layout_toRightOf="@id/editText_upsert_user_id"
             android:layout_centerVertical="true"
-            android:text="@string/swtich_active" />
+            android:checked="true"
+            android:text="@string/switch_active" />
 
     </RelativeLayout>
 
@@ -89,7 +90,7 @@
             android:layout_toRightOf="@id/imageview_upsert_biophoto"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:text="Set Biophoto"
+            android:text="@string/textView_setBioPhoto"
             />
 
     </RelativeLayout>

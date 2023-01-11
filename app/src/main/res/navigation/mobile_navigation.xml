@@ -43,9 +43,27 @@
             android:id="@+id/action_usersUpsertFragment_to_usersFragment"
             app:destination="@id/nav_users"
             />
+        <action
+            android:id="@+id/action_usersUpsertFragment_to_updateBioPhotoFaceDetectionActivity"
+            app:destination="@id/updateBioPhotoFaceDetectionActivity"
+            />
         <argument
             android:name="UserId"
             app:argType="integer"
             android:defaultValue="-1" />
     </fragment>
+
+    <activity
+        android:id="@+id/updateBioPhotoFaceDetectionActivity"
+        android:name="mx.ssaj.surfingattendanceapp.ui.facedetectionwrappers.UpdateBioPhotoFaceDetectionActivity"
+        android:label="@string/activity_update_biophoto">
+<!--        <action-->
+<!--            android:id="@+id/action_updateBioPhotoFaceDetectionActivity_to_usersUpsertFragment"-->
+<!--            app:destination="@id/nav_users_upsert"-->
+<!--            />-->
+        <argument
+            android:name="UserId"
+            app:argType="integer"
+            android:defaultValue="-1" />
+    </activity>
 </navigation>

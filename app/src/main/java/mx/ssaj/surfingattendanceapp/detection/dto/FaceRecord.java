@@ -12,9 +12,9 @@ public class FaceRecord {
 
     private Face face;
 
-    private Bitmap faceImage;
+    private Bitmap faceFullPhoto;
 
-    private Bitmap faceCropped;
+    private Bitmap faceThumbnail;
 
     private Float confidence;
 
@@ -25,14 +25,14 @@ public class FaceRecord {
 
     public FaceRecord(Face face, Bitmap faceImage) {
         this.face = face;
-        this.faceImage = faceImage;
+        this.faceFullPhoto = faceImage;
     }
 
     public FaceRecord(String name, Face face, Bitmap faceImage, Bitmap faceCropped, Float confidence) {
         this.name = name;
         this.face = face;
-        this.faceImage = faceImage;
-        this.faceCropped = faceCropped;
+        this.faceFullPhoto = faceImage;
+        this.faceThumbnail = faceCropped;
         this.confidence = confidence;
     }
 
@@ -52,20 +52,20 @@ public class FaceRecord {
         this.face = face;
     }
 
-    public Bitmap getFaceImage() {
-        return faceImage;
+    public Bitmap getFaceFullPhoto() {
+        return faceFullPhoto;
     }
 
-    public void setFaceImage(Bitmap faceImage) {
-        this.faceImage = faceImage;
+    public void setFaceFullPhoto(Bitmap faceFullPhoto) {
+        this.faceFullPhoto = faceFullPhoto;
     }
 
-    public Bitmap getFaceCropped() {
-        return faceCropped;
+    public Bitmap getFaceThumbnail() {
+        return faceThumbnail;
     }
 
-    public void setFaceCropped(Bitmap faceCropped) {
-        this.faceCropped = faceCropped;
+    public void setFaceThumbnail(Bitmap faceThumbnail) {
+        this.faceThumbnail = faceThumbnail;
     }
 
     public Float getConfidence() {
@@ -89,8 +89,8 @@ public class FaceRecord {
         return "FaceRecognized{" +
                 "name='" + name + '\'' +
                 ", face=" + face +
-                ", faceImage=" + faceImage +
-                ", faceCropped=" + faceCropped +
+                ", faceFullPhoto=" + faceFullPhoto +
+                ", faceThumbnail=" + faceThumbnail +
                 ", confidence=" + confidence +
                 '}';
     }

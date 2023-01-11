@@ -38,6 +38,8 @@ public class Users {
     // NFC Card Number
     public String mainCard;
 
+    /** Profile Photo **/
+    /** ------------------------------------------------------------------------------------------*/
     /**Name of user photo*/
     // Length(50)
     public String photoIdName;

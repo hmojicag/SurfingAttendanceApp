@@ -1,5 +1,8 @@
 package mx.ssaj.surfingattendanceapp.data.model;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+
 import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.Ignore;
@@ -8,19 +11,22 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import org.apache.commons.lang3.StringUtils;
 
+import java.io.ByteArrayOutputStream;
+import java.util.Base64;
 import java.util.Date;
 
-@Entity(primaryKeys = {"user", "no"})
+@Entity(primaryKeys = {"user", "type"})
 public class BioPhotos {
 
     @NonNull
     public int user;// PK
 
     @NonNull
-    // A consecutive from 1 to n in order of importance
-    // A user can have as many BioPhotos as needed
-    public int no;// PK
+    // Type of BioPhoto record
+    public int type;// PK
 
+    /** BioPhoto content **/
+    /** ------------------------------------------------------------------------------------------*/
     /**Name of user photo*/
     // Length(50)
     public String photoIdName;
@@ -32,22 +38,7 @@ public class BioPhotos {
     // Length(max)
     public String photoIdContent;
 
-    /**Name of user photo*/
-    // Length(50)
-    public String croppedPhotoIdName;
-
-    /**The size of user photo data in Base64 format*/
-    public int croppedPhotoIdSize;
-
-    /**User photo data in Base64 format*/
-    // Length(max)
-    public String croppedPhotoIdContent;
-
-    /** JSON format of the set of features for this BioPhoto which is a float[][]
-     *  Example: [[123.2, 9812.0, 1121.2, ...], [...], [...]]
-     * **/
-    // Length(max)
-    public String features;
+    /** ------------------------------------------------------------------------------------------*/
 
     // Date format: "yyyy-MM-dd HH:mm:ss"
     public String lastUpdated;
@@ -56,29 +47,31 @@ public class BioPhotos {
     public int isSync;
 
     /** ---------------------------------------------------------------------------------------- **/
-    /** Useful calculated fields  **/
+    /** Useful calculated fields and methods **/
 
     @Ignore
-    private float[][] feature;
+    public Bitmap getPhoto() {
+        byte[] bitmapdata = Base64.getDecoder().decode(photoIdContent);
+        return BitmapFactory.decodeByteArray(bitmapdata, 0, bitmapdata.length);
+    }
 
     @Ignore
-    public float[][] getFeature() {
-        if (feature == null) {
-            if (StringUtils.isEmpty(features)) {
-                feature = new float[][]{};
-            } else {
-                try {
-                    ObjectMapper objectMapper = new ObjectMapper();
-                    feature = objectMapper.readValue(features, float[][].class);
-                } catch (Exception ex) {
-                    // TODO: How to Logging???
-                    ex.printStackTrace();
-                    feature = new float[][]{};
-                }
-            }
+    public void setBioPhotoContent(String name, Bitmap bitmap) {
+        // Compressing Bitmap into a PNG, extract its file bytes
+        ByteArrayOutputStream blob = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, blob);
+        byte[] bitmapdata = blob.toByteArray();
+        // Encode JPG file bytes to Base64
+        photoIdName = name;
+        photoIdContent = Base64.getEncoder().encodeToString(bitmapdata);
+        photoIdSize = photoIdContent.length();
+    }
+
+    public String getBioPhotoStringIdentifier() {
+        if (User != null) {
+            return user + "-" + User.name;
         }
-
-        return feature;
+        return Integer.toString(user);
     }
 
     @Ignore
